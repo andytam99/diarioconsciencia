@@ -1,0 +1,6 @@
+<!-- PORTAFOLIO -->
+
+<section class="grid md:grid-cols-2 lg:grid-cols-3 grid-flow-dense gap-10 w-full h-auto mt-24 p-10">
+    <app-header *ngFor="let x of blogs; let i = index" [ngClass]="i == 0 ? 'col-span-2' : ''" [blog]="x">
+    </app-header>
+</section>

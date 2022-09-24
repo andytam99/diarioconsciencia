@@ -1,0 +1,19 @@
+.swiper {
+  @apply w-full h-auto;
+  & > .swiper-button-next,
+  & > .swiper-button-prev {
+    @apply bg-gray-400 w-10 h-10 rounded-full;
+    &:after {
+      @apply text-base text-white;
+    }
+  }
+  & > .swiper-slide {
+    @apply text-center text-xl bg-white flex items-center justify-center;
+  }
+  
+  & > .swiper-slide img {
+    @apply block w-full h-full object-cover;
+  }
+}
+
+
