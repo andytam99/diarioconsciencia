@@ -8,6 +8,7 @@ type heroImage = {
 };
 
 export interface Blogs {
+  _id: string;
   title: string;
   description: string;
   body: string;

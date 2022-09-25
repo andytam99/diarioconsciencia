@@ -1,4 +1,5 @@
 import { Entry } from 'contentful';
+import { Autor } from './autor';
 import { imageFile } from './contentful/imageFile';
 
 type heroImage = {
@@ -8,10 +9,12 @@ type heroImage = {
 };
 
 export interface Article {
-  image: string;
+  cover: string;
   title: string;
+  description: string;
   body: string;
+  slug: string;
   tag: string;
-  autor: string;
-  href: string;
+  autor: Autor;
+  date: string;
 }
