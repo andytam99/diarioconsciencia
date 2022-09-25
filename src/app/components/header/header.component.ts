@@ -12,16 +12,7 @@ import { sanityOptions } from "sanity";
   styleUrls: ["./header.component.scss"],
 })
 export class HeaderComponent implements OnInit {
-  @Input() blog: Article = {
-    title: "Lorem ipsum",
-    body: "",
-    autor: { name: "John Doe", image: "https://picsum.photos/600/600" },
-    tag: "Lorem",
-    cover: "https://picsum.photos/1440/1440",
-    slug: "lorem-ipsum",
-    description: "",
-    date: "2022-09-25T00:18:45.263Z",
-  };
+  @Input() blog: Article | undefined = undefined;
 
   sanityClientCredentials = {
     option: sanityClient(sanityOptions),

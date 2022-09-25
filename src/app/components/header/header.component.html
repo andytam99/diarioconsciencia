@@ -1,11 +1,11 @@
-<a routerLink="blog/{{blog.slug}}" class="flex flex-col mb-10 hover:scale-[1.01] transition-all ">
+<a *ngIf="blog" routerLink="blog/{{blog.slug}}" class="flex flex-col mb-10 hover:scale-[1.01] transition-all ">
 
     <div class="flex items-center justify-center w-full h-1/4 relative">
         <img src="{{urlFor(blog.cover).url()}}" class="w-full object-cover h-full max-h-80" />
     </div>
 
     <div class="columns-1 pt-5">
-        <span class="text-xl text-gray-600 font-bold mb-2">{{blog.tag}}</span>
+        <span class="text-xl text-gray-600 font-bold mb-2">{{blog.tag.name}}</span>
         <h3 class="mb-2">
             {{blog.title}}
         </h3>

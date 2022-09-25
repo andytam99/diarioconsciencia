@@ -25,16 +25,14 @@ import { SlideComponent } from './components/slide/slide.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
 import { FormComponent } from './components/form/form.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
-import { ContentfulService } from './services/contentful/contentful.service';
 import { MarkdownModule } from 'ngx-markdown';
 import { BlogComponent } from './pages/blog/blog.component';
-import { BlogsComponent } from './pages/blogs/blogs.component';
 import { MenuComponent } from './components/menu/menu.component';
+import { SanityService } from './services/sanity/sanity.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BlogsComponent,
     BlogComponent,
     NavbarComponent,
     HeaderComponent,
@@ -66,7 +64,7 @@ import { MenuComponent } from './components/menu/menu.component';
     ReactiveFormsModule,
   ],
   providers: [
-    ContentfulService
+    SanityService
   ],
   bootstrap: [AppComponent],
 })

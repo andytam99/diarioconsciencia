@@ -23,6 +23,7 @@
     "@angular/router": "^14.2.0",
     "@contentful/rich-text-from-markdown": "^15.13.1",
     "@contentful/rich-text-html-renderer": "^15.13.1",
+    "@portabletext/to-html": "^1.0.4",
     "@sanity/client": "^3.4.1",
     "@sanity/image-url": "^1.0.1",
     "@types/marked": "^4.0.7",

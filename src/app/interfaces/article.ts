@@ -1,20 +1,19 @@
-import { Entry } from 'contentful';
-import { Autor } from './autor';
-import { imageFile } from './contentful/imageFile';
+import type {
+  ArbitraryTypedObject,
+  PortableTextBlock
+} from '@portabletext/types'
 
-type heroImage = {
-  description: string;
-  file: imageFile;
-  title: string;
-};
+import { Autor } from './autor';
+import { Tags } from './tags';
+
 
 export interface Article {
   cover: string;
   title: string;
   description: string;
-  body: string;
+  body: string | ArbitraryTypedObject | PortableTextBlock;
   slug: string;
-  tag: string;
+  tag: Tags;
   autor: Autor;
   date: string;
 }

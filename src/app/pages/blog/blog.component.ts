@@ -1,35 +1,56 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, AfterViewInit } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
-import { Entry } from 'contentful';
-import { Blogs } from 'src/app/interfaces/blogs';
-import { ContentfulService } from 'src/app/services/contentful/contentful.service';
+import imageUrlBuilder from "@sanity/image-url";
+import sanityClient from "@sanity/client";
+import { toHTML } from "@portabletext/to-html";
+import { sanityOptions } from "sanity";
+
+import { SanityService } from "src/app/services/sanity/sanity.service";
+
+import { Article } from "src/app/interfaces/article";
 
 @Component({
-  selector: 'app-blog',
-  templateUrl: './blog.component.html',
-  styleUrls: ['./blog.component.scss'],
+  selector: "app-blog",
+  templateUrl: "./blog.component.html",
+  styleUrls: ["./blog.component.scss"],
   preserveWhitespaces: true,
 })
-export class BlogComponent implements OnInit {
+export class BlogComponent implements AfterViewInit {
   loading: boolean = true;
-  blog: Entry<Blogs> | undefined = undefined;
+  blog: Article | undefined = undefined;
 
   constructor(
-    private contentfulService: ContentfulService,
+    private sanityService: SanityService,
     private route: ActivatedRoute
   ) {}
 
-  getBlogs() {
-    const slug = this.route.snapshot.paramMap.get('slug');
+  sanityClientCredentials = {
+    option: sanityClient(sanityOptions),
+  };
+
+  urlFor = (source: any) =>
+    imageUrlBuilder(this.sanityClientCredentials.option).image(source);
+
+  async getBlog() {
+    const slug = this.route.snapshot.paramMap.get("slug");
     if (!slug) return;
-    this.contentfulService.getBlogs({ 'fields.slug': slug }).then((res) => {
-      this.blog = res[0];
-      this.loading = false;
-    });
+    this.sanityService
+      .getBlog(slug)
+      .then((i) => {
+        const data = i[0];
+        if (typeof data.body === "string") return;
+        const body = toHTML(data.body);
+        data.body = body;
+        this.blog = data;
+        this.loading = false;
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
-  ngOnInit(): void {
-    this.getBlogs();
+  ngAfterViewInit(): void {
+    this.getBlog();
   }
 }
