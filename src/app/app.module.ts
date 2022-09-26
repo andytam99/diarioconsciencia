@@ -29,7 +29,11 @@ import { MarkdownModule } from 'ngx-markdown';
 import { BlogComponent } from './pages/blog/blog.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { SanityService } from './services/sanity/sanity.service';
-import { SearchComponent } from './pages/search/search/search.component';
+import { SearchComponent } from './pages/search/search.component';
+import { InfoComponent } from './pages/info/info.component';
+import { TerminosComponent } from './pages/terminos/terminos.component';
+import { PrivacidadComponent } from './pages/privacidad/privacidad.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +47,10 @@ import { SearchComponent } from './pages/search/search/search.component';
     InicioComponent,
     MenuComponent,
     SearchComponent,
+    InfoComponent,
+    TerminosComponent,
+    PrivacidadComponent,
+    ContactoComponent,
   ],
   imports: [
     MarkdownModule.forRoot({
@@ -50,7 +58,7 @@ import { SearchComponent } from './pages/search/search/search.component';
     }),
     SwiperModule,
     HttpClientModule,
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     AppRoutingModule,
     BrowserAnimationsModule,
     MatTabsModule,
