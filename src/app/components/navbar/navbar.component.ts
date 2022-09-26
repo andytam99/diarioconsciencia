@@ -7,6 +7,7 @@ import {
   transition,
   sequence,
 } from "@angular/animations";
+import { Router, ActivatedRoute, ParamMap } from "@angular/router";
 
 @Component({
   selector: "app-navbar",
@@ -52,7 +53,21 @@ export class NavbarComponent implements OnInit {
     }, 200);
   }
 
-  constructor() {}
+  search() {
+    this.router.navigate(["search"]);
+  }
+
+  query(event: Event) {
+    const code = (event as KeyboardEvent);
+    const value = (code.target as HTMLInputElement).value;
+    if (!code.shiftKey && code.key == 'Enter') {
+      this.router.navigate(["search"], {
+        queryParams: { title: value },
+      });
+    }
+  }
+
+  constructor(private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {}
 }

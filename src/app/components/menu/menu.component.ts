@@ -8,16 +8,15 @@ import { SanityService } from "src/app/services/sanity/sanity.service";
   styleUrls: ["./menu.component.scss"],
 })
 export class MenuComponent implements OnInit {
-  tags: Tags[] = []
+  tags: Tags[] = [];
 
-  async getTags() {
-    this.tags = await this.sanityService.getTags();
-    return this.tags
+  getTags(): void {
+    this.sanityService.getTags().subscribe((i) => (this.tags = i));
   }
 
   constructor(private sanityService: SanityService) {}
 
   ngOnInit(): void {
-    this.getTags()
+    this.getTags();
   }
 }

@@ -29,6 +29,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { BlogComponent } from './pages/blog/blog.component';
 import { MenuComponent } from './components/menu/menu.component';
 import { SanityService } from './services/sanity/sanity.service';
+import { SearchComponent } from './pages/search/search/search.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { SanityService } from './services/sanity/sanity.service';
     FormComponent,
     InicioComponent,
     MenuComponent,
+    SearchComponent,
   ],
   imports: [
     MarkdownModule.forRoot({

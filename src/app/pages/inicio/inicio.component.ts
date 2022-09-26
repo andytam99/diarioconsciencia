@@ -1,30 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { Article } from 'src/app/interfaces/article';
-import { BlogsMock } from 'src/app/mocks/blogs';
-import { SanityService } from 'src/app/services/sanity/sanity.service';
+import { Component, OnInit } from "@angular/core";
+import { Article } from "src/app/interfaces/article";
+import { SanityService } from "src/app/services/sanity/sanity.service";
+
+import { Observable, of } from "rxjs";
+
+import { BlogsMock } from "src/app/mocks/blogs";
 
 @Component({
-  selector: 'app-inicio',
-  templateUrl: './inicio.component.html',
-  styleUrls: ['./inicio.component.scss'],
+  selector: "app-inicio",
+  templateUrl: "./inicio.component.html",
+  styleUrls: ["./inicio.component.scss"],
 })
 export class InicioComponent implements OnInit {
-  blogs: Article[] = []
+  blogs: Article[] = [];
 
   imageUrl(source: any) {
     return this.sanityService.urlFor(source);
   }
 
-  async getBlogs(): Promise<Article[]>  {
-    this.blogs = await this.sanityService.getBlogs();
-    // console.log(this.blogs)
-    return this.blogs;
+  getBlogs(): void {
+    this.sanityService.getBlogs().subscribe((blogs) => (this.blogs = blogs));
   }
 
-  constructor(private sanityService: SanityService ) {}
+  constructor(private sanityService: SanityService) {}
 
   ngOnInit(): void {
     this.getBlogs();
   }
-
 }

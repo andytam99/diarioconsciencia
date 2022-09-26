@@ -4,6 +4,7 @@ import imageUrlBuilder from "@sanity/image-url";
 import { sanityOptions } from "sanity";
 import { Article } from "src/app/interfaces/article";
 import { Tags } from "src/app/interfaces/tags";
+import { Observable, from, of, tap, catchError } from "rxjs";
 
 @Injectable({
   providedIn: "root",
@@ -18,9 +19,10 @@ export class SanityService {
   urlFor = (source: any) =>
     imageUrlBuilder(this.sanityClientCredentials.option).image(source);
 
-  async getBlogs(): Promise<Article[]> {
-    return await this.sanityClientCredentials.option.fetch(
-      `*[_type == "blog"] | order(date) {
+  getBlogs(): Observable<Article[]> {
+    return from(
+      this.sanityClientCredentials.option.fetch(
+        `*[_type == "blog"] | order(date) {
         _id, 
         title, 
         cover,
@@ -29,19 +31,29 @@ export class SanityService {
         tag->{name},
         autor->{name, image}
       }[0...10]`
+      )
+    ).pipe(
+      tap((_) => console.log("fetched")),
+      catchError(this.handleError<Article[]>("Error"))
     );
   }
 
-  async getTags(): Promise<Tags[]> {
-    return await this.sanityClientCredentials.option.fetch(`
+  getTags(): Observable<Tags[]> {
+    return from(
+      this.sanityClientCredentials.option.fetch(`
     *[_type == "tag"] {
       name
     }
-    `);
+    `)
+    ).pipe(
+      tap((_) => console.log("fetched")),
+      catchError(this.handleError<Tags[]>("Error"))
+    );
   }
 
-  async getBlogsByTags(tag: string) {
-    return await this.sanityClientCredentials.option.fetch(`
+  getBlogsByTags(tag: string): Observable<Article[]> {
+    return from(
+      this.sanityClientCredentials.option.fetch(`
     *[_type == "tag" && name == "${tag}"] {
       name,
       "related": *[_type == "blog" && references(^._id)] {
@@ -53,11 +65,16 @@ export class SanityService {
         tag,
         autor->{name, image}
       }
-    }`);
+    }`)
+    ).pipe(
+      tap((_) => console.log("fetched")),
+      catchError(this.handleError<Article[]>("Error"))
+    );
   }
 
-  async getBlogsByTitle(title: string) {
-    return await this.sanityClientCredentials.option.fetch(`
+  getBlogsByTitle(title: string): Observable<Article[]> {
+    return from(
+      this.sanityClientCredentials.option.fetch(`
     *[_type == "blog" && title match "${title}*"] {
       _id, 
         title, 
@@ -66,12 +83,17 @@ export class SanityService {
         "slug": slug.current,
         tag->{name},
         autor->{name, image}
-    }
-    `);
+    }[0...10]
+    `)
+    ).pipe(
+      tap((_) => console.log("fetched")),
+      catchError(this.handleError<Article[]>("Error"))
+    );
   }
 
-  async getBlog(slug: string): Promise<Article[]> {
-    return await this.sanityClientCredentials.option.fetch(`
+  getBlog(slug: string): Observable<Article[]> {
+    return from(
+      this.sanityClientCredentials.option.fetch(`
     *[_type == "blog" && slug.current == "${slug}"] {
       cover,
       title,
@@ -81,6 +103,20 @@ export class SanityService {
       date,
       "slug": slug.current
     }
-    `);
+    `)
+    ).pipe(
+      tap((_) => console.log("fetched")),
+      catchError(this.handleError<Article[]>("Error"))
+    );
+  }
+
+  private handleError<T>(operation = "operation", result?: T) {
+    return (error: any): Observable<T> => {
+      // TODO: send the error to remote logging infrastructure
+      console.error(error); // log to console instead
+
+      // Let the app keep running by returning an empty result.
+      return of(result as T);
+    };
   }
 }

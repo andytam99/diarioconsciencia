@@ -32,22 +32,17 @@ export class BlogComponent implements AfterViewInit {
   urlFor = (source: any) =>
     imageUrlBuilder(this.sanityClientCredentials.option).image(source);
 
-  async getBlog() {
+  getBlog(): void {
     const slug = this.route.snapshot.paramMap.get("slug");
     if (!slug) return;
-    this.sanityService
-      .getBlog(slug)
-      .then((i) => {
-        const data = i[0];
-        if (typeof data.body === "string") return;
-        const body = toHTML(data.body);
-        data.body = body;
-        this.blog = data;
-        this.loading = false;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    this.sanityService.getBlog(slug).subscribe((i) => {
+      const data = i[0];
+      if (typeof data.body === "string") return;
+      const body = toHTML(data.body);
+      data.body = body;
+      this.blog = data;
+      this.loading = false;
+    });
   }
 
   ngAfterViewInit(): void {
