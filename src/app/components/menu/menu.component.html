@@ -12,7 +12,7 @@
 
             <!-- FALTA EL HREF DEL TAG. CANONIZAR O ALGO. -->
 
-            <a *ngFor="let x of tags" href="/"
+            <a *ngFor="let x of tags" href="/tags/{{x.name}}"
                 class="w-full h-auto max-h-fit hover:p-3 hover:bg-white/25 hover:rounded-md transition-all hover:drop-shadow-sm text-xl text-white ">{{x.name}}</a>
 
         </div>
@@ -21,7 +21,6 @@
             <a routerLink="/informacion" class="transition-all rounded-md text-white p-2 hover:bg-white/25">Información</a>
             <a routerLink="/privacidad" class="transition-all rounded-md text-white p-2 hover:bg-white/25">Privacidad</a>
             <a routerLink="/terminos" class="transition-all rounded-md text-white p-2 hover:bg-white/25">Términos</a>
-            <a routerLink="/contacto" class="transition-all rounded-md text-white p-2 hover:bg-white/25">Contacto</a>
         </div>
 
     </div>

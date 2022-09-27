@@ -23,7 +23,6 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HeaderComponent } from './components/header/header.component';
 import { SlideComponent } from './components/slide/slide.component';
 import { CarouselComponent } from './components/carousel/carousel.component';
-import { FormComponent } from './components/form/form.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { MarkdownModule } from 'ngx-markdown';
 import { BlogComponent } from './pages/blog/blog.component';
@@ -33,7 +32,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { InfoComponent } from './pages/info/info.component';
 import { TerminosComponent } from './pages/terminos/terminos.component';
 import { PrivacidadComponent } from './pages/privacidad/privacidad.component';
-import { ContactoComponent } from './pages/contacto/contacto.component';
+import { TagsComponent } from './pages/tags/tags.component';
 
 @NgModule({
   declarations: [
@@ -43,14 +42,13 @@ import { ContactoComponent } from './pages/contacto/contacto.component';
     HeaderComponent,
     SlideComponent,
     CarouselComponent,
-    FormComponent,
     InicioComponent,
     MenuComponent,
     SearchComponent,
     InfoComponent,
     TerminosComponent,
     PrivacidadComponent,
-    ContactoComponent,
+    TagsComponent
   ],
   imports: [
     MarkdownModule.forRoot({

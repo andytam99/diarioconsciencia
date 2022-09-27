@@ -5,6 +5,10 @@ import { sanityOptions } from "sanity";
 import { Article } from "src/app/interfaces/article";
 import { Tags } from "src/app/interfaces/tags";
 import { Observable, from, of, tap, catchError } from "rxjs";
+import { Info } from "src/app/interfaces/info";
+import { Privacy } from "src/app/interfaces/privacy";
+import { Terminos } from "src/app/interfaces/terminos";
+import { TagBase } from "src/app/interfaces/tagbase";
 
 @Injectable({
   providedIn: "root",
@@ -33,7 +37,7 @@ export class SanityService {
       }[0...10]`
       )
     ).pipe(
-      tap((_) => console.log("fetched")),
+      tap((_) => console.log("fetched Blogs")),
       catchError(this.handleError<Article[]>("Error"))
     );
   }
@@ -46,17 +50,17 @@ export class SanityService {
     }
     `)
     ).pipe(
-      tap((_) => console.log("fetched")),
+      tap((_) => console.log("fetched Tags")),
       catchError(this.handleError<Tags[]>("Error"))
     );
   }
 
-  getBlogsByTags(tag: string): Observable<Article[]> {
+  getBlogsByTags(tag: string): Observable<TagBase> {
     return from(
       this.sanityClientCredentials.option.fetch(`
     *[_type == "tag" && name == "${tag}"] {
       name,
-      "related": *[_type == "blog" && references(^._id)] {
+      "blogs": *[_type == "blog" && references(^._id)] {
         _id, 
         title, 
         cover,
@@ -65,10 +69,10 @@ export class SanityService {
         tag,
         autor->{name, image}
       }
-    }`)
+    }[0]`)
     ).pipe(
-      tap((_) => console.log("fetched")),
-      catchError(this.handleError<Article[]>("Error"))
+      tap((_) => console.log("fetched Blogs by Tags")),
+      catchError(this.handleError<TagBase>("Error"))
     );
   }
 
@@ -86,7 +90,7 @@ export class SanityService {
     }[0...10]
     `)
     ).pipe(
-      tap((_) => console.log("fetched")),
+      tap((_) => console.log("fetched Blogs by Title")),
       catchError(this.handleError<Article[]>("Error"))
     );
   }
@@ -105,8 +109,47 @@ export class SanityService {
     }
     `)
     ).pipe(
-      tap((_) => console.log("fetched")),
+      tap((_) => console.log("fetched Blog")),
       catchError(this.handleError<Article[]>("Error"))
+    );
+  }
+
+  getInfo(): Observable<Info> {
+    return from(
+      this.sanityClientCredentials.option.fetch(`
+    *[_type == "info"] {
+      body
+    }[0]
+    `)
+    ).pipe(
+      tap((_) => console.log("fetched Info")),
+      catchError(this.handleError<Info>("Error"))
+    );
+  }
+
+  getPrivacy(): Observable<Privacy> {
+    return from(
+      this.sanityClientCredentials.option.fetch(`
+    *[_type == "privacidad"] {
+      body
+    }[0]
+    `)
+    ).pipe(
+      tap((_) => console.log("fetched Privacy")),
+      catchError(this.handleError<Privacy>("Error"))
+    );
+  }
+
+  getTerms(): Observable<Terminos> {
+    return from(
+      this.sanityClientCredentials.option.fetch(`
+    *[_type == "terminos"] {
+      body
+    }[0]
+    `)
+    ).pipe(
+      tap((_) => console.log("fetched Terms")),
+      catchError(this.handleError<Terminos>("Error"))
     );
   }
 

@@ -1,0 +1,10 @@
+<div *ngIf="loading; else loadElse" class="flex items-center justify-center w-full h-screen">
+    <span class="text-xl">Loading...</span>
+</div>
+<ng-template #loadElse>
+    <section class="flex flex-col marker:w-full h-auto mt-24 p-10">
+        <h1 class="mb-5">{{tags.name}}</h1>
+        <app-header *ngFor="let x of tags.blogs; let i = index" [ngClass]="i == 0 ? 'col-span-2' : ''" [blog]="x">
+        </app-header>
+    </section>
+</ng-template>

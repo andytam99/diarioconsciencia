@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { BlogComponent } from './pages/blog/blog.component';
-import { ContactoComponent } from './pages/contacto/contacto.component';
 import { InfoComponent } from './pages/info/info.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { PrivacidadComponent } from './pages/privacidad/privacidad.component';
 import { SearchComponent } from './pages/search/search.component';
+import { TagsComponent } from './pages/tags/tags.component';
 import { TerminosComponent } from './pages/terminos/terminos.component';
 
 const routes: Routes = [
@@ -22,12 +22,12 @@ const routes: Routes = [
     component: SearchComponent,
   },
   {
-    path: 'informacion',
-    component: InfoComponent,
+    path: 'tags/:tag',
+    component: TagsComponent,
   },
   {
-    path: 'contacto',
-    component: ContactoComponent,
+    path: 'informacion',
+    component: InfoComponent,
   },
   {
     path: 'privacidad',
