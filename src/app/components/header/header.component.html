@@ -5,11 +5,14 @@
     </div>
 
     <div class="columns-1 pt-5">
-        <span class="text-xl text-gray-600 font-bold mb-2">{{blog.tag.name}}</span>
+        <div class="flex">
+            <span class="text-xl mr-2 text-gray-600 font-bold mb-2">{{blog.date | date}} | </span>
+            <span class="text-xl text-gray-600 font-bold mb-2">{{blog.tag.name}}</span>
+        </div>
         <h3 class="mb-2">
             {{blog.title}}
         </h3>
-        <span class="text-xl text-gray-600 font-medium">{{blog.autor.name}}</span>
+        <span class="text-xl text-gray-600 font-normal">{{blog.description}}</span>
     </div>
 
 </a>

@@ -30,6 +30,7 @@ export class SanityService {
         _id, 
         title, 
         cover,
+        description,
         date, 
         "slug": slug.current,
         tag->{name},
@@ -64,6 +65,7 @@ export class SanityService {
         _id, 
         title, 
         cover,
+        description,
         date, 
         "slug": slug.current,
         tag,
@@ -84,6 +86,7 @@ export class SanityService {
         title, 
         cover,
         date, 
+        description,
         "slug": slug.current,
         tag->{name},
         autor->{name, image}

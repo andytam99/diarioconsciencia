@@ -11,7 +11,10 @@
             <div class="bg-gray-100 w-full p-10 flex flex-col items-center justify-center">
                 <span class="w-full max-w-[85ch]">
                     <h1>{{blog.title}}</h1>
-                    <p>{{blog.date | date}}</p>
+                    <div class="block">
+                        <span class="text-xl">Por {{blog.autor.name}}</span>
+                        <span>el {{blog.date | date}}</span>
+                    </div>
                 </span>
             </div>
         </div>

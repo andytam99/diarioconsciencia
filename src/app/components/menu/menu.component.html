@@ -8,18 +8,20 @@
             </div>
         </div>
 
-        <div class="flex flex-grow w-full p-5 h-auto">
+        <div class="flex flex-col flex-grow w-full p-5 h-auto">
 
             <!-- FALTA EL HREF DEL TAG. CANONIZAR O ALGO. -->
 
             <a *ngFor="let x of tags" href="/tags/{{x.name}}"
-                class="w-full h-auto max-h-fit hover:p-3 hover:bg-white/25 hover:rounded-md transition-all hover:drop-shadow-sm text-xl text-white ">{{x.name}}</a>
+                class="w-full h-auto max-h-fit hover:p-3 hover:bg-white/25 hover:rounded-md transition-all hover:drop-shadow-sm text-xl text-white mb-2 ">{{x.name}}</a>
 
         </div>
 
         <div class="flex flex-shrink-0 flex-wrap items-center justify-start w-full h-auto p-3 bg-white/10">
-            <a routerLink="/informacion" class="transition-all rounded-md text-white p-2 hover:bg-white/25">Información</a>
-            <a routerLink="/privacidad" class="transition-all rounded-md text-white p-2 hover:bg-white/25">Privacidad</a>
+            <a routerLink="/informacion"
+                class="transition-all rounded-md text-white p-2 hover:bg-white/25">Información</a>
+            <a routerLink="/privacidad"
+                class="transition-all rounded-md text-white p-2 hover:bg-white/25">Privacidad</a>
             <a routerLink="/terminos" class="transition-all rounded-md text-white p-2 hover:bg-white/25">Términos</a>
         </div>
 
