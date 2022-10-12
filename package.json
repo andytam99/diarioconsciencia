@@ -1,5 +1,5 @@
 {
-  "name": "curriculum",
+  "name": "diarioconsciencia",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,10 +7,10 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev:ssr": "ng run curriculum:serve-ssr",
-    "serve:ssr": "node dist/curriculum/server/main.js",
-    "build:ssr": "ng build && ng run curriculum:server",
-    "prerender": "ng run curriculum:prerender"
+    "dev:ssr": "ng run diarioconsciencia:serve-ssr",
+    "serve:ssr": "node dist/diarioconsciencia/server/main.js",
+    "build:ssr": "ng build && ng run diarioconsciencia:server",
+    "prerender": "ng run diarioconsciencia:prerender"
   },
   "private": true,
   "dependencies": {

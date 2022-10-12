@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "curriculum": {
+    "diarioconsciencia": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/curriculum/browser",
+            "outputPath": "dist/diarioconsciencia/browser",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "curriculum:build:production"
+              "browserTarget": "diarioconscienciabuild:production"
             },
             "development": {
-              "browserTarget": "curriculum:build:development"
+              "browserTarget": "diarioconscienciabuild:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "curriculum:build"
+            "browserTarget": "diarioconscienciabuild"
           }
         },
         "test": {
@@ -105,15 +105,15 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "curriculum:build:production",
-            "firebaseProject": "curriculum-7f931",
-            "firebaseHostingSite": "curriculum-7f931"
+            "browserTarget": "diarioconscienciabuild:production",
+            "firebaseProject": "diarioconsciencia-7f931",
+            "firebaseHostingSite": "diarioconsciencia-7f931"
           }
         },
         "server": {
           "builder": "@angular-devkit/build-angular:server",
           "options": {
-            "outputPath": "dist/curriculum/server",
+            "outputPath": "dist/diarioconsciencia/server",
             "main": "server.ts",
             "tsConfig": "tsconfig.server.json",
             "inlineStyleLanguage": "scss"
@@ -140,12 +140,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "curriculum:build:development",
-              "serverTarget": "curriculum:server:development"
+              "browserTarget": "diarioconscienciabuild:development",
+              "serverTarget": "diarioconscienciaserver:development"
             },
             "production": {
-              "browserTarget": "curriculum:build:production",
-              "serverTarget": "curriculum:server:production"
+              "browserTarget": "diarioconscienciabuild:production",
+              "serverTarget": "diarioconscienciaserver:production"
             }
           },
           "defaultConfiguration": "development"
@@ -159,12 +159,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "curriculum:build:production",
-              "serverTarget": "curriculum:server:production"
+              "browserTarget": "diarioconscienciabuild:production",
+              "serverTarget": "diarioconscienciaserver:production"
             },
             "development": {
-              "browserTarget": "curriculum:build:development",
-              "serverTarget": "curriculum:server:development"
+              "browserTarget": "diarioconscienciabuild:development",
+              "serverTarget": "diarioconscienciaserver:development"
             }
           },
           "defaultConfiguration": "production"

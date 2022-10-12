@@ -1,0 +1,13 @@
+{
+    "version": 1,
+    "public": true,
+    "name": "diarioconsciencia",
+    "rewrites": [
+      { "source": "/(.*)", "destination": "/api" }
+    ],
+    "functions": {
+      "api/index.js": {
+        "includeFiles": "dist/diarioconsciencia/browser/**"
+      }
+    }
+  }
