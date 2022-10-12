@@ -1,11 +1,10 @@
 import type {
   ArbitraryTypedObject,
-  PortableTextBlock
-} from '@portabletext/types'
+  PortableTextBlock,
+} from "@portabletext/types";
 
-import { Autor } from './autor';
-import { Tags } from './tags';
-
+import { Autor } from "./autor";
+import { Tags } from "./tags";
 
 export interface Article {
   cover: string;
@@ -14,6 +13,7 @@ export interface Article {
   body: string | ArbitraryTypedObject | PortableTextBlock;
   slug: string;
   tag: Tags;
+  keywords: string[];
   autor: Autor;
   date: string;
 }

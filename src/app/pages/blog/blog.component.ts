@@ -1,5 +1,6 @@
 import { Component, AfterViewInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
+import { Meta } from "@angular/platform-browser";
 
 import imageUrlBuilder from "@sanity/image-url";
 import sanityClient from "@sanity/client";
@@ -22,7 +23,8 @@ export class BlogComponent implements AfterViewInit {
 
   constructor(
     private sanityService: SanityService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private meta: Meta
   ) {}
 
   sanityClientCredentials = {
@@ -42,6 +44,11 @@ export class BlogComponent implements AfterViewInit {
       data.body = body;
       this.blog = data;
       this.loading = false;
+      this.meta.addTags([
+        { name: "title", content: this.blog.title },
+        { name: "keywords", content: this.blog.keywords.join(", ") },
+        { name: "description", content: this.blog.description },
+      ]);
     });
   }
 

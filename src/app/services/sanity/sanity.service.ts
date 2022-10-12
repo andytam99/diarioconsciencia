@@ -31,7 +31,7 @@ export class SanityService {
         title, 
         cover,
         description,
-        date, 
+        date,
         "slug": slug.current,
         tag->{name},
         autor->{name, image}
@@ -106,6 +106,7 @@ export class SanityService {
       title,
       description,
       body,
+      keywords,
       autor->{name, image},
       date,
       "slug": slug.current
