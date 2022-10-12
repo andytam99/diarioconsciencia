@@ -13,7 +13,7 @@ export function app(): express.Express {
   const server = express();
   let distFolder = join(process.cwd(), "browser");
   if (!existsSync(distFolder)) {
-    distFolder = join(process.cwd(), "dist/curriculum/browser");
+    distFolder = join(process.cwd(), "dist/diarioconsciencia/browser");
   }
   const indexHtml = existsSync(join(distFolder, "index.original.html"))
     ? "index.original.html"
