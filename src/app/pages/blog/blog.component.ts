@@ -1,4 +1,4 @@
-import { Component, AfterViewInit } from "@angular/core";
+import { Component, AfterViewInit, OnInit } from "@angular/core";
 import { ActivatedRoute } from "@angular/router";
 import { Meta } from "@angular/platform-browser";
 
@@ -17,7 +17,7 @@ import { Article } from "src/app/interfaces/article";
   styleUrls: ["./blog.component.scss"],
   preserveWhitespaces: true,
 })
-export class BlogComponent implements AfterViewInit {
+export class BlogComponent implements OnInit {
   loading: boolean = true;
   blog: Article | undefined = undefined;
 
@@ -52,7 +52,7 @@ export class BlogComponent implements AfterViewInit {
     });
   }
 
-  ngAfterViewInit(): void {
+  ngOnInit(): void {
     this.getBlog();
   }
 }

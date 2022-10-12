@@ -4,11 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
+    "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "dev": "ng run curriculum:serve-ssr",
-    "serve": "node dist/curriculum/server/main.js",
-    "build": "ng build && ng run curriculum:server",
+    "dev:ssr": "ng run curriculum:serve-ssr",
+    "serve:ssr": "node dist/curriculum/server/main.js",
+    "build:ssr": "ng build && ng run curriculum:server",
     "prerender": "ng run curriculum:prerender"
   },
   "private": true,
@@ -33,6 +34,7 @@
     "@sanity/image-url": "^1.0.1",
     "@types/marked": "^4.0.7",
     "angular-in-memory-web-api": "^0.14.0",
+    "contentful": "^9.2.4",
     "emoji-toolkit": "^6.6.0",
     "express": "^4.15.2",
     "marked": "^4.1.0",
