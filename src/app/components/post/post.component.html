@@ -1,0 +1,17 @@
+<a *ngIf="post" routerLink="/post/{{post.slug}}" class="flex flex-col mb-10 hover:scale-[1.01] transition-all ">
+
+    <div class="flex items-center justify-center w-full h-auto max-h-80 relative border border-gray-100 p-8">
+        <h3 class="mb-2">
+            {{post.title}}
+        </h3>
+    </div>
+
+    <div class="columns-1 pt-2">
+        <span class="text-xl text-gray-600 font-normal">{{post.description}}</span>
+        <div class="flex mt-2">
+            <span class="text-xl mr-2 text-gray-600 font-bold">{{post.date | date}} | </span>
+            <span class="text-xl text-gray-600 font-bold">{{post.tag.name}}</span>
+        </div>
+    </div>
+
+</a>

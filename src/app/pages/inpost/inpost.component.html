@@ -1,0 +1,23 @@
+<section *ngIf="post; else nullBlock" class="flex flex-col items-center justify-center w-full h-auto">
+
+    <div class="w-full min-h-screen h-auto p-10 flex flex-col items-center justify-center">
+
+        <span class="w-full max-w-[85ch]">
+
+            <h1 class="mb-4">{{post.title}}</h1>
+            <p>{{post.description}}</p>
+
+            <div class="flex flex-col mt-4 text-gray-700">
+                <span class="text-xl mr-2">Por {{post.autor.name}}</span>
+                <span class="text-base">el {{post.date | date}}</span>
+            </div>
+
+        </span>
+
+    </div>
+
+</section>
+
+<ng-template #nullBlock>
+    <h1>Not Found</h1>
+</ng-template>

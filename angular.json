@@ -70,10 +70,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "diarioconscienciabuild:production"
+              "browserTarget": "diarioconsciencia:build:production"
             },
             "development": {
-              "browserTarget": "diarioconscienciabuild:development"
+              "browserTarget": "diarioconsciencia:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -81,7 +81,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "diarioconscienciabuild"
+            "browserTarget": "diarioconsciencia:build"
           }
         },
         "test": {
@@ -105,7 +105,7 @@
           "options": {
             "prerender": false,
             "ssr": false,
-            "browserTarget": "diarioconscienciabuild:production",
+            "browserTarget": "diarioconsciencia:build:production",
             "firebaseProject": "diarioconsciencia-7f931",
             "firebaseHostingSite": "diarioconsciencia-7f931"
           }
@@ -140,12 +140,12 @@
           "builder": "@nguniversal/builders:ssr-dev-server",
           "configurations": {
             "development": {
-              "browserTarget": "diarioconscienciabuild:development",
-              "serverTarget": "diarioconscienciaserver:development"
+              "browserTarget": "diarioconsciencia:build:development",
+              "serverTarget": "diarioconsciencia:server:development"
             },
             "production": {
-              "browserTarget": "diarioconscienciabuild:production",
-              "serverTarget": "diarioconscienciaserver:production"
+              "browserTarget": "diarioconsciencia:build:production",
+              "serverTarget": "diarioconsciencia:server:production"
             }
           },
           "defaultConfiguration": "development"
@@ -159,12 +159,12 @@
           },
           "configurations": {
             "production": {
-              "browserTarget": "diarioconscienciabuild:production",
-              "serverTarget": "diarioconscienciaserver:production"
+              "browserTarget": "diarioconsciencia:build:production",
+              "serverTarget": "diarioconsciencia:server:production"
             },
             "development": {
-              "browserTarget": "diarioconscienciabuild:development",
-              "serverTarget": "diarioconscienciaserver:development"
+              "browserTarget": "diarioconsciencia:build:development",
+              "serverTarget": "diarioconsciencia:server:development"
             }
           },
           "defaultConfiguration": "production"

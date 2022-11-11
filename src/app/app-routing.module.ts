@@ -1,48 +1,55 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
-import { BlogComponent } from './pages/blog/blog.component';
-import { InfoComponent } from './pages/info/info.component';
-import { InicioComponent } from './pages/inicio/inicio.component';
-import { PrivacidadComponent } from './pages/privacidad/privacidad.component';
-import { SearchComponent } from './pages/search/search.component';
-import { TagsComponent } from './pages/tags/tags.component';
-import { TerminosComponent } from './pages/terminos/terminos.component';
+import { NgModule } from "@angular/core";
+import { RouterModule, Routes } from "@angular/router";
+import { InpostComponent } from "./pages/inpost/inpost.component";
+import { BlogComponent } from "./pages/blog/blog.component";
+import { InfoComponent } from "./pages/info/info.component";
+import { InicioComponent } from "./pages/inicio/inicio.component";
+import { PrivacidadComponent } from "./pages/privacidad/privacidad.component";
+import { SearchComponent } from "./pages/search/search.component";
+import { TagsComponent } from "./pages/tags/tags.component";
+import { TerminosComponent } from "./pages/terminos/terminos.component";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     component: InicioComponent,
   },
   {
-    path: 'blog/:slug',
+    path: "blog/:slug",
     component: BlogComponent,
   },
   {
-    path: 'search',
+    path: "post/:slug",
+    component: InpostComponent,
+  },
+  {
+    path: "search",
     component: SearchComponent,
   },
   {
-    path: 'tags/:tag',
+    path: "tags/:tag",
     component: TagsComponent,
   },
   {
-    path: 'informacion',
+    path: "informacion",
     component: InfoComponent,
   },
   {
-    path: 'privacidad',
+    path: "privacidad",
     component: PrivacidadComponent,
   },
   {
-    path: 'terminos',
+    path: "terminos",
     component: TerminosComponent,
-  }
+  },
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {
-    initialNavigation: 'enabledBlocking'
-})],
+  imports: [
+    RouterModule.forRoot(routes, {
+      initialNavigation: "enabledBlocking",
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}
